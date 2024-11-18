@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -15,14 +17,21 @@ public class ParkingSpot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int spotId;
 
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
     private Location location;
 
-    private double pricePerHour;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gateId")
+    private List<Gate> gates;
+
+    @OneToOne
+    @JoinColumn(name = "rate_id")
+    private Rate rate;
 }
 
 

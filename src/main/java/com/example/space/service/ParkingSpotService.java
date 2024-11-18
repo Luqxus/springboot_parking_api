@@ -20,7 +20,7 @@ public class ParkingSpotService {
     }
 
     public ParkingSpot getParkingSpot(int id) {
-        return repository.findById(id).orElse(new ParkingSpot(0, "No Spot", null, 0));
+        return repository.findById(id).orElse(null);
     }
 
     public void createParkingSpot(ParkingSpot spot) {

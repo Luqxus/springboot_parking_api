@@ -1,33 +1,32 @@
 package com.example.space.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 
+
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Location {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int locationId;
+    private int paymentId;
 
-    private String street;
+    @Builder.Default
+    private String status = "PENDING";
 
-    private String city;
+    private double amount;
 
-    private String province;
-
-    private double latitude;
-
-    private double longitude;
-    
+    private LocalDateTime createdAt;
 }
